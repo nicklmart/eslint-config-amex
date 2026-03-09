@@ -14,12 +14,8 @@
 
 // eslint-disable-next-line import/no-unresolved -- see https://github.com/import-js/eslint-plugin-import/issues/1810
 import { defineConfig } from "eslint/config";
-import testConfig from "./test-config.js";
-import typescriptConfig from "./ts-config.js";
 
 export default defineConfig([
-  ...testConfig,
-  ...typescriptConfig,
   {
     rules: {
       // allow the use of the `any` type in tests, as its often required to type mocks simply

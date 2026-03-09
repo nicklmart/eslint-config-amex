@@ -15,13 +15,18 @@
 // eslint-disable-next-line import/no-unresolved -- see https://github.com/import-js/eslint-plugin-import/issues/1810
 import { defineConfig } from "eslint/config";
 // eslint-disable-next-line import/no-unresolved -- see https://github.com/import-js/eslint-plugin-import/issues/1810
-import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
-import baseConfig from "./index.js";
+import typescriptEslint from "typescript-eslint";
+import eslintPluginReact from "eslint-plugin-react";
+import eslintPluginImport from "eslint-plugin-import";
 
 export default defineConfig([
-  ...baseConfig,
+  ...typescriptEslint.configs.recommended,
   {
-    ...typescriptEslintPlugin.configs.recommended,
+    // these plugins need to be defined because some of their rules are overrides below
+    plugins: {
+      react: eslintPluginReact,
+      import: eslintPluginImport,
+    },
     settings: { "import/resolver": { typescript: {} } },
     rules: {
       // prevent using the `any` type explicitly, as it negates the benefits of TS
